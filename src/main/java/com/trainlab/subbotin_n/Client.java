@@ -9,7 +9,7 @@ import io.restassured.specification.RequestSpecification;
 
 public class Client {
 
-    private static final String BASE_URL = "https://...";
+    private static final String BASE_URL = "https://back-test-4zwpv.ondigitalocean.app";
 
     protected static RequestSpecification getSpec() {
 
