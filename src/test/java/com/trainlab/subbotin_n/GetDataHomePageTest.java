@@ -39,7 +39,7 @@ public class GetDataHomePageTest {
         DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
 
         ArrayList<String> expectedListDataHomePage = new ArrayList<>(Arrays.asList(
-                "Создай свой успех",
+                "Cоздай свой успех",
                 "Наши тренажеры разработаны на основе тестовых заданий работодателей. выполняя задания и зарабатывая баллы, ты найдешь работу мечты", "Выполни задания",
                 "Собирай баллы",
                 "Повышай рейтинг",
