@@ -81,12 +81,28 @@
         </dependency>
 
         <dependency>
-            <groupId>com.cekrlic</groupId>
-            <artifactId>jdbc-sshj</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>com.github.monkeysintown</groupId>
+            <artifactId>jdbc-ssh</artifactId>
+            <version>1.0.10</version>
         </dependency>
 
     </dependencies>
+
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>bintray</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <id>maven_central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
