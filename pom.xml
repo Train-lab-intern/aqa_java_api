@@ -71,7 +71,30 @@
             <version>${javafaker.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.monkeysintown</groupId>
+            <artifactId>jdbc-ssh</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+
     </dependencies>
+
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>bintray</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
