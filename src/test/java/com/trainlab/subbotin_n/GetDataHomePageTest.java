@@ -2,6 +2,7 @@ package com.trainlab.subbotin_n;
 
 import com.trainlab.subbotin_n.model.home_page.DataHomePage;
 import com.trainlab.subbotin_n.model.home_page.HomePageClient;
+import com.trainlab.subbotin_n.model.home_page.JDBCPostgreSQLConnect;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
@@ -10,7 +11,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static com.trainlab.subbotin_n.model.home_page.JDBCPostgreSQLConnect.postgresqlConnect;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.*;
 
@@ -65,8 +65,10 @@ public class GetDataHomePageTest {
         }
     }
 
-    @Test
-    public void jdbcPostgreSqlConnect() {
-        postgresqlConnect();
-    }
+//    @Test
+//    public void jdbcPostgreSqlConnect() {
+//        JDBCPostgreSQLConnect connect = new JDBCPostgreSQLConnect();
+//        connect.postgresqlConnect();
+//        int i = 0;
+//    }
 }

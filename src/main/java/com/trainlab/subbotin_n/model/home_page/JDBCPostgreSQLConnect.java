@@ -2,7 +2,7 @@ package com.trainlab.subbotin_n.model.home_page;
 
 import com.m11n.jdbc.ssh.SshDriver;
 
-import java.sql.Connection;
+//import java.sql.Connection;
 
 import java.sql.*;
 import java.nio.file.*;
@@ -11,7 +11,7 @@ import java.util.*;
 
 public class JDBCPostgreSQLConnect {
 
-    public static void postgresqlConnect() {
+    public static void main(String [] args) {
         try{
             Class.forName("org.postgresql.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = getConnection()){
@@ -32,6 +32,12 @@ public class JDBCPostgreSQLConnect {
             info.load(in);
         }
 
-        return new SshDriver().connect(info.getProperty("url"), info);
+//        String url = info.getProperty("url");
+//        String username = info.getProperty("username");
+//        String password = info.getProperty("password");
+
+//        return DriverManager.getConnection(url, username, password);
+        SshDriver driver = new SshDriver();
+        return driver.connect(info.getProperty("url"), info);
     }
 }
