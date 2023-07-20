@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.trainlab.subbotin_n.model.home_page.JDBCPostgreSQLConnect.postgresqlConnect;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.*;
 
@@ -62,5 +63,10 @@ public class GetDataHomePageTest {
         for (int i = 0; i < expectedListDataHomePage.size(); i++) {
             assertEquals(expectedListDataHomePage.get(i), actualListDataHomePage.get(i));
         }
+    }
+
+    @Test
+    public void jdbcPostgreSqlConnect() {
+        postgresqlConnect();
     }
 }

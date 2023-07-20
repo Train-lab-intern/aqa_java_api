@@ -15,5 +15,4 @@ public class HomePageClient extends Client {
                 .get(PATH_GET_DATA)
                 .then();
     }
-
 }
