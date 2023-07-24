@@ -22,7 +22,7 @@
         <gson.version>2.10.1</gson.version>
 
         <!-- Allure version-->
-        <allure.version>2.20.0</allure.version>
+        <allure.version>2.21.0</allure.version>
 
         <!-- Lombok version-->
         <lombol.version>1.18.26</lombol.version>
@@ -78,23 +78,29 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.monkeysintown</groupId>
-            <artifactId>jdbc-ssh</artifactId>
-            <version>1.0.10</version>
+            <groupId>io.github.emotionbug</groupId>
+            <artifactId>jdbc-sshj</artifactId>
+            <version>1.0.13</version>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.github.monkeysintown</groupId>-->
+<!--            <artifactId>jdbc-ssh</artifactId>-->
+<!--            <version>1.0.10</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 
-    <repositories>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>central</id>
-            <name>bintray</name>
-            <url>http://jcenter.bintray.com</url>
-        </repository>
-    </repositories>
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <snapshots>-->
+<!--                <enabled>false</enabled>-->
+<!--            </snapshots>-->
+<!--            <id>central</id>-->
+<!--            <name>bintray</name>-->
+<!--            <url>http://jcenter.bintray.com</url>-->
+<!--        </repository>-->
+<!--    </repositories>-->
 
     <build>
         <plugins>

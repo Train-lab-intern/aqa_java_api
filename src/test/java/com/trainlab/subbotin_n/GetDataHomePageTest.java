@@ -8,6 +8,7 @@ import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Test;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -65,10 +66,9 @@ public class GetDataHomePageTest {
         }
     }
 
-//    @Test
-//    public void jdbcPostgreSqlConnect() {
-//        JDBCPostgreSQLConnect connect = new JDBCPostgreSQLConnect();
-//        connect.postgresqlConnect();
-//        int i = 0;
-//    }
+    @Test
+    public void jdbcPostgreSqlConnect() throws SQLException {
+        JDBCPostgreSQLConnect connect = new JDBCPostgreSQLConnect();
+        connect.connectDbTrainLab();
+    }
 }
