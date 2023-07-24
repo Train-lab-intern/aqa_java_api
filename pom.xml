@@ -77,30 +77,13 @@
             <version>42.6.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.github.emotionbug</groupId>
-            <artifactId>jdbc-sshj</artifactId>
-            <version>1.0.13</version>
-        </dependency>
-
 <!--        <dependency>-->
-<!--            <groupId>com.github.monkeysintown</groupId>-->
-<!--            <artifactId>jdbc-ssh</artifactId>-->
-<!--            <version>1.0.10</version>-->
+<!--            <groupId>io.github.emotionbug</groupId>-->
+<!--            <artifactId>jdbc-sshj</artifactId>-->
+<!--            <version>1.0.13</version>-->
 <!--        </dependency>-->
 
     </dependencies>
-
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <snapshots>-->
-<!--                <enabled>false</enabled>-->
-<!--            </snapshots>-->
-<!--            <id>central</id>-->
-<!--            <name>bintray</name>-->
-<!--            <url>http://jcenter.bintray.com</url>-->
-<!--        </repository>-->
-<!--    </repositories>-->
 
     <build>
         <plugins>

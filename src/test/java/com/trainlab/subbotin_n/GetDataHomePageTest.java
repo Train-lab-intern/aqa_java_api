@@ -2,7 +2,7 @@ package com.trainlab.subbotin_n;
 
 import com.trainlab.subbotin_n.model.home_page.DataHomePage;
 import com.trainlab.subbotin_n.model.home_page.HomePageClient;
-import com.trainlab.subbotin_n.model.home_page.JDBCPostgreSQLConnect;
+import com.trainlab.subbotin_n.model.home_page.JdbcPostgreSQLConnect;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
@@ -67,8 +67,9 @@ public class GetDataHomePageTest {
     }
 
     @Test
-    public void jdbcPostgreSqlConnect() throws SQLException {
-        JDBCPostgreSQLConnect connect = new JDBCPostgreSQLConnect();
-        connect.connectDbTrainLab();
+    public void jdbcPostgreSqlConnect() {
+        JdbcPostgreSQLConnect connect = new JdbcPostgreSQLConnect();
+        connect.connectDataBase();
+
     }
 }
