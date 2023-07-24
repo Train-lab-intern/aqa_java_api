@@ -8,9 +8,12 @@ import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Test;
 
-import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.*;
@@ -18,6 +21,8 @@ import static org.junit.Assert.*;
 public class GetDataHomePageTest {
 
     private ValidatableResponse response;
+    private JdbcPostgreSQLConnect jdbcPostgreSQLConnect;
+    private Statement statement;
 
     @Test
     @DisplayName("Get StatusCode from HomePage")
@@ -67,9 +72,27 @@ public class GetDataHomePageTest {
     }
 
     @Test
-    public void jdbcPostgreSqlConnect() {
-        JdbcPostgreSQLConnect connect = new JdbcPostgreSQLConnect();
-        connect.connectDataBase();
+    public void jdbcPostgreSqlConnect() throws Exception {
+        Map<Double, String> map = new HashMap<>();
+        ArrayList<Double> list = new ArrayList<>();
 
+        jdbcPostgreSQLConnect = new JdbcPostgreSQLConnect();
+        jdbcPostgreSQLConnect.connectDataBase();
+
+        statement = jdbcPostgreSQLConnect.connection.createStatement();
+
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM frontend_data");
+
+        while (resultSet.next()) {
+            list.add(resultSet.getDouble("front_id"));
+//            map.put(resultSet.getDouble("front_id"), resultSet.getString("text"));
+//            double id = resultSet.getDouble("front_id");
+//            String text = resultSet.getString("text");
+//            System.out.println(id + " - " + text);
+
+            System.out.println(list);
+        }
+
+        jdbcPostgreSQLConnect.closeConnect();
     }
 }
