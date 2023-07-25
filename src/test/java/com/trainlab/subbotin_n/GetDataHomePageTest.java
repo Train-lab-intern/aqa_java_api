@@ -23,6 +23,7 @@ public class GetDataHomePageTest {
     private ValidatableResponse response;
     private JdbcPostgreSQLConnect jdbcPostgreSQLConnect;
     private Statement statement;
+    private HashMap<Double, String> dataFromDB = new HashMap<>();
 
     @Test
     @DisplayName("Get StatusCode from HomePage")
@@ -73,24 +74,21 @@ public class GetDataHomePageTest {
 
     @Test
     public void jdbcPostgreSqlConnect() throws Exception {
-        Map<Double, String> map = new HashMap<>();
-        ArrayList<Double> list = new ArrayList<>();
 
         jdbcPostgreSQLConnect = new JdbcPostgreSQLConnect();
         jdbcPostgreSQLConnect.connectDataBase();
 
         statement = jdbcPostgreSQLConnect.connection.createStatement();
 
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM frontend_data");
+//        ResultSet resultSet = statement.executeQuery("SELECT front_id, text FROM frontend_data ORDER BY front_id");
+        ResultSet resultSet = statement.executeQuery("SELECT front_id, text FROM frontend_data WHERE id = 1");
 
         while (resultSet.next()) {
-            list.add(resultSet.getDouble("front_id"));
-//            map.put(resultSet.getDouble("front_id"), resultSet.getString("text"));
+            dataFromDB.put(resultSet.getDouble("front_id"), resultSet.getString("text"));
+            System.out.println(dataFromDB);
 //            double id = resultSet.getDouble("front_id");
 //            String text = resultSet.getString("text");
 //            System.out.println(id + " - " + text);
-
-            System.out.println(list);
         }
 
         jdbcPostgreSQLConnect.closeConnect();
