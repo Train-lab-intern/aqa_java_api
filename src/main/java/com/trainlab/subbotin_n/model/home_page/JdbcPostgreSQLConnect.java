@@ -10,10 +10,8 @@ public class JdbcPostgreSQLConnect {
     public static Connection connection;
 
     public static void connectDataBase() throws Exception {
-
         Class.forName("org.postgresql.Driver").getDeclaredConstructor().newInstance();
         connection = getConnection();
-
     }
 
     private static Connection getConnection() throws SQLException, IOException {
