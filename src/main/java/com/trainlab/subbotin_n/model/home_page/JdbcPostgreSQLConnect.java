@@ -7,9 +7,9 @@ import java.util.*;
 
 public class JdbcPostgreSQLConnect {
 
-    static Connection connection;
-    static Statement statement;
-    static ResultSet resultSet;
+    protected static Connection connection;
+    protected static Statement statement;
+    protected static ResultSet resultSet;
     public static final Map<Double, String> expectedDataFromDb = new HashMap<>();
 
     public static void getDataFromHomePage() throws Exception {
