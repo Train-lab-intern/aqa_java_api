@@ -35,5 +35,4 @@ public class DataHomePage {
 
     @SerializedName("1.9")
     private String nine;
-
 }
