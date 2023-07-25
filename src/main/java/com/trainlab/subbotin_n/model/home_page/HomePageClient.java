@@ -4,6 +4,7 @@ import com.trainlab.subbotin_n.Client;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
+import static org.apache.http.HttpStatus.SC_OK;
 
 public class HomePageClient extends Client {
 
@@ -13,6 +14,7 @@ public class HomePageClient extends Client {
         return given()
                 .spec(getSpec())
                 .get(PATH_GET_DATA)
-                .then();
+                .then()
+                .statusCode(SC_OK);
     }
 }

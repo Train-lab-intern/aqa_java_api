@@ -7,28 +7,16 @@ import java.util.*;
 
 public class JdbcPostgreSQLConnect {
 
-    public Connection connection;
+    public static Connection connection;
 
-    public void connectDataBase() throws Exception {
+    public static void connectDataBase() throws Exception {
 
         Class.forName("org.postgresql.Driver").getDeclaredConstructor().newInstance();
-
         connection = getConnection();
-//        System.out.println("Connection to TrainLab DB succesfull!!!");
-
-//        Statement statement = connection.createStatement();
-//
-//        ResultSet resultSet = statement.executeQuery("SELECT * FROM frontend_data");
-//
-//        while (resultSet.next()) {
-//            double id = resultSet.getDouble("front_id");
-//            String text = resultSet.getString("text");
-//            System.out.println(id + " - " + text);
-//        }
 
     }
 
-    private Connection getConnection() throws SQLException, IOException {
+    private static Connection getConnection() throws SQLException, IOException {
 
         Properties info = new Properties();
         try (InputStream in = Files.newInputStream(Paths.get("database.properties"))) {
@@ -42,7 +30,7 @@ public class JdbcPostgreSQLConnect {
         return DriverManager.getConnection(url, username, password);
     }
 
-    public void closeConnect() throws SQLException {
+    public static void closeConnect() throws SQLException {
         connection.close();
     }
 }
