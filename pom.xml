@@ -77,12 +77,6 @@
             <version>42.6.0</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>io.github.emotionbug</groupId>-->
-<!--            <artifactId>jdbc-sshj</artifactId>-->
-<!--            <version>1.0.13</version>-->
-<!--        </dependency>-->
-
     </dependencies>
 
     <build>
