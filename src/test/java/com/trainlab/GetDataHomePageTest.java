@@ -19,21 +19,21 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GetDataHomePageTest {
 
-    private ValidatableResponse response;
+    protected ValidatableResponse response;
+    protected DataHomePage actualDataHomePage;
 
     @Before
     public void setUp() throws Exception {
         JdbcPostgreSQLConnect.getDataFromHomePage();
+
+        response = HomePageClient.getDataHomePage();
+        actualDataHomePage = response.extract().as(DataHomePage.class);
     }
 
     @Test
     @DisplayName("Check data from HomePage with id 1.1")
     @Description("Expected response: StatusCode 200 and Actual Data from HomePage")
     public void a_checkDataFromHomePage() {
-
-        response = HomePageClient.getDataHomePage();
-        DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
-
         assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.1), actualDataHomePage.getOne());
     }
 
@@ -41,10 +41,6 @@ public class GetDataHomePageTest {
     @DisplayName("Check data from HomePage with id 1.2")
     @Description("Expected response: StatusCode 200 and Actual Data from HomePage")
     public void b_checkDataFromHomePage() {
-
-        response = HomePageClient.getDataHomePage();
-        DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
-
         assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.2), actualDataHomePage.getTwo());
     }
 
@@ -52,10 +48,6 @@ public class GetDataHomePageTest {
     @DisplayName("Check data from HomePage with id 1.3")
     @Description("Expected response: StatusCode 200 and Actual Data from HomePage")
     public void c_checkDataFromHomePage() {
-
-        response = HomePageClient.getDataHomePage();
-        DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
-
         assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.3), actualDataHomePage.getThree());
     }
 
@@ -63,10 +55,6 @@ public class GetDataHomePageTest {
     @DisplayName("Check data from HomePage with id 1.4")
     @Description("Expected response: StatusCode 200 and Actual Data from HomePage")
     public void d_checkDataFromHomePage() {
-
-        response = HomePageClient.getDataHomePage();
-        DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
-
         assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.4), actualDataHomePage.getFour());
     }
 
@@ -74,10 +62,6 @@ public class GetDataHomePageTest {
     @DisplayName("Check data from HomePage with id 1.5")
     @Description("Expected response: StatusCode 200 and Actual Data from HomePage")
     public void e_checkDataFromHomePage() {
-
-        response = HomePageClient.getDataHomePage();
-        DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
-
         assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.5), actualDataHomePage.getFive());
     }
 
@@ -85,10 +69,6 @@ public class GetDataHomePageTest {
     @DisplayName("Check data from HomePage with id 1.6")
     @Description("Expected response: StatusCode 200 and Actual Data from HomePage")
     public void f_checkDataFromHomePage() {
-
-        response = HomePageClient.getDataHomePage();
-        DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
-
         assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.6), actualDataHomePage.getSix());
     }
 
@@ -96,10 +76,6 @@ public class GetDataHomePageTest {
     @DisplayName("Check data from HomePage with id 1.7")
     @Description("Expected response: StatusCode 200 and Actual Data from HomePage")
     public void g_checkDataFromHomePage() {
-
-        response = HomePageClient.getDataHomePage();
-        DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
-
         assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.7), actualDataHomePage.getSeven());
     }
 
@@ -107,10 +83,6 @@ public class GetDataHomePageTest {
     @DisplayName("Check data from HomePage with id 1.8")
     @Description("Expected response: StatusCode 200 and Actual Data from HomePage")
     public void h_checkDataFromHomePage() {
-
-        response = HomePageClient.getDataHomePage();
-        DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
-
         assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.8), actualDataHomePage.getEight());
     }
 
@@ -118,10 +90,6 @@ public class GetDataHomePageTest {
     @DisplayName("Check data from HomePage with id 1.9")
     @Description("Expected response: StatusCode 200 and Actual Data from HomePage")
     public void i_checkDataFromHomePage() {
-
-        response = HomePageClient.getDataHomePage();
-        DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
-
         assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.9), actualDataHomePage.getNine());
     }
 
