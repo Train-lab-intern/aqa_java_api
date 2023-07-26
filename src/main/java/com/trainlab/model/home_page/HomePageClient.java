@@ -1,6 +1,6 @@
-package com.trainlab.subbotin_n.model.home_page;
+package com.trainlab.model.home_page;
 
-import com.trainlab.subbotin_n.Client;
+import com.trainlab.Client;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;

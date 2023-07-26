@@ -1,15 +1,19 @@
-package com.trainlab.subbotin_n;
+package com.trainlab;
 
-import com.trainlab.subbotin_n.model.home_page.*;
+import com.trainlab.model.home_page.DataHomePage;
+import com.trainlab.model.home_page.HomePageClient;
+import com.trainlab.model.home_page.JdbcPostgreSQLConnect;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import java.sql.*;
+import java.sql.SQLException;
 
-import static com.trainlab.subbotin_n.model.home_page.JdbcPostgreSQLConnect.*;
 import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -19,7 +23,7 @@ public class GetDataHomePageTest {
 
     @Before
     public void setUp() throws Exception {
-        getDataFromHomePage();
+        JdbcPostgreSQLConnect.getDataFromHomePage();
     }
 
     @Test
@@ -30,8 +34,7 @@ public class GetDataHomePageTest {
         response = HomePageClient.getDataHomePage();
         DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
 
-        assertEquals(expectedDataFromDb.get(1.1), actualDataHomePage.getOne());
-
+        assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.1), actualDataHomePage.getOne());
     }
 
     @Test
@@ -42,7 +45,7 @@ public class GetDataHomePageTest {
         response = HomePageClient.getDataHomePage();
         DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
 
-        assertEquals(expectedDataFromDb.get(1.2), actualDataHomePage.getTwo());
+        assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.2), actualDataHomePage.getTwo());
     }
 
     @Test
@@ -53,7 +56,7 @@ public class GetDataHomePageTest {
         response = HomePageClient.getDataHomePage();
         DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
 
-        assertEquals(expectedDataFromDb.get(1.3), actualDataHomePage.getThree());
+        assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.3), actualDataHomePage.getThree());
     }
 
     @Test
@@ -64,7 +67,7 @@ public class GetDataHomePageTest {
         response = HomePageClient.getDataHomePage();
         DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
 
-        assertEquals(expectedDataFromDb.get(1.4), actualDataHomePage.getFour());
+        assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.4), actualDataHomePage.getFour());
     }
 
     @Test
@@ -75,7 +78,7 @@ public class GetDataHomePageTest {
         response = HomePageClient.getDataHomePage();
         DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
 
-        assertEquals(expectedDataFromDb.get(1.5), actualDataHomePage.getFive());
+        assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.5), actualDataHomePage.getFive());
     }
 
     @Test
@@ -86,7 +89,7 @@ public class GetDataHomePageTest {
         response = HomePageClient.getDataHomePage();
         DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
 
-        assertEquals(expectedDataFromDb.get(1.6), actualDataHomePage.getSix());
+        assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.6), actualDataHomePage.getSix());
     }
 
     @Test
@@ -97,7 +100,7 @@ public class GetDataHomePageTest {
         response = HomePageClient.getDataHomePage();
         DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
 
-        assertEquals(expectedDataFromDb.get(1.7), actualDataHomePage.getSeven());
+        assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.7), actualDataHomePage.getSeven());
     }
 
     @Test
@@ -108,7 +111,7 @@ public class GetDataHomePageTest {
         response = HomePageClient.getDataHomePage();
         DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
 
-        assertEquals(expectedDataFromDb.get(1.8), actualDataHomePage.getEight());
+        assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.8), actualDataHomePage.getEight());
     }
 
     @Test
@@ -119,11 +122,11 @@ public class GetDataHomePageTest {
         response = HomePageClient.getDataHomePage();
         DataHomePage actualDataHomePage = response.extract().as(DataHomePage.class);
 
-        assertEquals(expectedDataFromDb.get(1.9), actualDataHomePage.getNine());
+        assertEquals(JdbcPostgreSQLConnect.expectedDataFromDb.get(1.9), actualDataHomePage.getNine());
     }
 
     @After
     public void tearDown() throws SQLException {
-        closeConnect();
+        JdbcPostgreSQLConnect.closeConnect();
     }
 }

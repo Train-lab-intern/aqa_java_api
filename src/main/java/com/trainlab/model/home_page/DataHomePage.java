@@ -1,7 +1,11 @@
-package com.trainlab.subbotin_n.model.home_page;
+package com.trainlab.model.home_page;
 
 import com.google.gson.annotations.SerializedName;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 
 @Getter
 @Setter
