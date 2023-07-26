@@ -14,7 +14,9 @@ import org.junit.runners.MethodSorters;
 
 import java.sql.SQLException;
 
-import static org.junit.Assert.*;
+import static com.trainlab.model.home_page.JdbcPostgreSQLConnect.getDataFromHomePage;
+import static org.junit.Assert.assertEquals;
+
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GetDataHomePageTest {
@@ -24,7 +26,7 @@ public class GetDataHomePageTest {
 
     @Before
     public void setUp() throws Exception {
-        JdbcPostgreSQLConnect.getDataFromHomePage();
+       getDataFromHomePage();
 
         response = HomePageClient.getDataHomePage();
         actualDataHomePage = response.extract().as(DataHomePage.class);
