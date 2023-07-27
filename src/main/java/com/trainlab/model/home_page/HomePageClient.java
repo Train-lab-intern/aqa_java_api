@@ -18,24 +18,27 @@ public class HomePageClient extends Client {
 
     private static final String PATH_GET_DATA = "/front/pages/1";
 
-    public static ValidatableResponse getData() {
-        return given()
-                .spec(getSpec())
-                .get(PATH_GET_DATA)
-                .then();
-    }
-
     public static Map<String, String> getDataHomePage() {
         gson = new Gson();
         mapType = new TypeToken<>(){};
 
-        response = HomePageClient.getData();
         String json = response.extract().asString();
 
         Map<String, String> stringMap = gson.fromJson(json, mapType);
         stringMap = sortByKeys(stringMap);
 
         return stringMap;
+    }
+
+    public static int getStatusCode() {
+        return response.extract().statusCode();
+    }
+
+    public static void sendGetRequest() {
+        response = given()
+                .spec(getSpec())
+                .get(PATH_GET_DATA)
+                .then();
     }
 
     private static <K, V> Map<K, V> sortByKeys(Map<K, V> unsortedMap)

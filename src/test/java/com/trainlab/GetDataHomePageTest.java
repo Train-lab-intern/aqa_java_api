@@ -1,19 +1,18 @@
 package com.trainlab;
 
+import com.trainlab.model.home_page.HomePageClient;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import java.util.Map;
 
 import static com.trainlab.model.home_page.HomePageClient.getDataHomePage;
 import static com.trainlab.model.home_page.JdbcPostgreSQLConnect.getDataFromDataBase;
+import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.assertEquals;
 
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GetDataHomePageTest {
 
     protected Map<String, String> expectedDataFromDataBase;
@@ -22,16 +21,15 @@ public class GetDataHomePageTest {
     @Test
     @DisplayName("Check data from HomePage")
     @Description("Expected response: Actual data from HomePage is equal to data from DataBase")
-    public void a_checkDataFromHomePage() throws Exception {
+    public void checkDataFromHomePage() throws Exception {
+        HomePageClient.sendGetRequest();
+
+        assertEquals(SC_OK, HomePageClient.getStatusCode());
 
         expectedDataFromDataBase = getDataFromDataBase();
         actualDataFromHomePage = getDataHomePage();
 
-        for (int i = 0; i < expectedDataFromDataBase.size(); i++) {
-            System.out.println(expectedDataFromDataBase.keySet());
-        }
-
-//        assertEquals(expectedDataFromDataBase, actualDataFromHomePage);
+        assertEquals(expectedDataFromDataBase, actualDataFromHomePage);
 
     }
 }
