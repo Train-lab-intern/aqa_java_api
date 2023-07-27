@@ -1,52 +1,75 @@
 package com.trainlab.model.home_page;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
+import java.util.TreeMap;
 
 public class JdbcPostgreSQLConnect {
 
     protected static Connection connection;
     protected static Statement statement;
     protected static ResultSet resultSet;
-    public static final Map<Double, String> expectedDataFromDb = new HashMap<>();
 
-    public static void getDataFromHomePage() throws Exception {
+    public static Map<String, String> getDataFromDataBase() throws Exception {
         connectDataBase();
         statement = connection.createStatement();
 
         resultSet = statement.executeQuery("SELECT front_id, text FROM frontend_data");
 
+        Map<String, String> dataFromDataBase = new HashMap<>();
+
         while (resultSet.next()) {
-            expectedDataFromDb.put(resultSet.getDouble("front_id"), resultSet.getString("text"));
+            dataFromDataBase.put(resultSet.getString("front_id"), resultSet.getString("text"));
+        }
+
+        closeConnect();
+
+        dataFromDataBase = sortByKeys(dataFromDataBase);
+        return dataFromDataBase;
+    }
+
+    private static void connectDataBase() {
+
+        try{
+            Class.forName("org.postgresql.Driver").getDeclaredConstructor().newInstance();
+            connection = getConnection();
+            System.out.println("Connection to Store DB succesfull!");
+
+        }
+        catch(Exception ex){
+            System.out.println("Connection failed...");
+            System.out.println(ex);
         }
     }
 
-    private static void connectDataBase() throws Exception {
-        Class.forName("org.postgresql.Driver").getDeclaredConstructor().newInstance();
-        connection = getConnection();
-    }
+    private static Connection getConnection() throws SQLException {
 
-    private static Connection getConnection() throws SQLException, IOException {
-
-        Properties info = new Properties();
-        try (InputStream in = Files.newInputStream(Paths.get("database.properties"))) {
-            info.load(in);
+        try {
+            System.getProperties().load(ClassLoader.getSystemResourceAsStream("database.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        String url = info.getProperty("url");
-        String username = info.getProperty("username");
-        String password = info.getProperty("password");
+        String url = System.getProperty("url");
+        String username = System.getProperty("username");
+        String password = System.getProperty("password");
 
         return DriverManager.getConnection(url, username, password);
     }
 
-    public static void closeConnect() throws SQLException {
+    private static <K, V> Map<K, V> sortByKeys(Map<K, V> unsortedMap)
+    {
+        return new TreeMap<>(unsortedMap);
+    }
+
+    private static void closeConnect() throws SQLException {
         connection.close();
     }
 }
