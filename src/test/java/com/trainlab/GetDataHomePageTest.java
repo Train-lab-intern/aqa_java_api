@@ -1,12 +1,13 @@
 package com.trainlab;
 
-import com.trainlab.model.home_page.HomePageClient;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 
 import java.util.Map;
 
+import static com.trainlab.model.home_page.HomePageClient.sendGetRequest;
+import static com.trainlab.model.home_page.HomePageClient.getStatusCode;
 import static com.trainlab.model.home_page.HomePageClient.getDataHomePage;
 import static com.trainlab.model.home_page.JdbcPostgreSQLConnect.getDataFromDataBase;
 import static org.apache.http.HttpStatus.SC_OK;
@@ -22,9 +23,9 @@ public class GetDataHomePageTest {
     @DisplayName("Check data from HomePage")
     @Description("Expected response: Actual data from HomePage is equal to data from DataBase")
     public void checkDataFromHomePage() throws Exception {
-        HomePageClient.sendGetRequest();
+        sendGetRequest();
 
-        assertEquals(SC_OK, HomePageClient.getStatusCode());
+        assertEquals(SC_OK, getStatusCode());
 
         expectedDataFromDataBase = getDataFromDataBase();
         actualDataFromHomePage = getDataHomePage();
