@@ -27,6 +27,7 @@ public class UserGenerator {
                 break;
             case NO_PASSWORD_USER:
                 user.setUsername(faker.name().firstName());
+                user.setEmail(faker.internet().emailAddress());
                 break;
         }
         return user;
