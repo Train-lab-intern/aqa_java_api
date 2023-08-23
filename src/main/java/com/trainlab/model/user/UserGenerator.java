@@ -37,7 +37,7 @@ public class UserGenerator {
     }
 
     public static String getRandomEmail() {
-        return faker.internet().emailAddress();
+        return faker.internet().emailAddress(getRandomUserName());
     }
 
     public static String getRandomPassword() {
