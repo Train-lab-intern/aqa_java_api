@@ -10,7 +10,7 @@ public class UserClient extends Client {
     private static final String PATH_REGISTER = "/api/v1/users/register";
     private static final String LOGIN_REGISTER = "/api/v1/auth";
 
-    public static ValidatableResponse createUser (User user) {
+    public static ValidatableResponse createUser(User user) {
 
         return given()
                 .spec(getSpec())
