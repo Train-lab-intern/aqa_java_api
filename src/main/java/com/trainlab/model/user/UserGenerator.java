@@ -18,19 +18,19 @@ public class UserGenerator {
                 user.setPassword(getRandomValidPassword());
                 break;
             case NO_NAME_USER:
-                user.setUsername(null);
+                user.setUsername("");
                 user.setEmail(getRandomEmail());
                 user.setPassword(getRandomValidPassword());
                 break;
             case NO_EMAIL_USER:
                 user.setUsername(getRandomUserName());
-                user.setEmail(null);
+                user.setEmail("");
                 user.setPassword(getRandomValidPassword());
                 break;
             case NO_PASSWORD_USER:
                 user.setUsername(getRandomUserName());
                 user.setEmail(getEmailWithLocalPart(user.getUsername()));
-                user.setPassword(null);
+                user.setPassword("");
                 break;
         }
         return user;
@@ -40,20 +40,20 @@ public class UserGenerator {
         return faker.name().firstName();
     }
 
-    public static String getRandomEmail() {
+    private static String getRandomEmail() {
         return faker.internet().emailAddress(getRandomUserName());
     }
 
-    public static String getEmailWithLocalPart(String localPart) {
+    private static String getEmailWithLocalPart(String localPart) {
         return faker.internet().emailAddress(localPart);
     }
 
-    public static String getRandomValidPassword() {
-        return faker.internet().password(8, 10, true, false, true);
+    private static String getRandomValidPassword() {
+        return faker.internet().password(8, 10, false, false, false) + "A0";
     }
 
     public static String getRandomInvalidPassword() {
-        return faker.internet().password(3, 4) + "A0";
+        return faker.internet().password(3, 4, false, false, false) + "A0";
     }
 
 }
