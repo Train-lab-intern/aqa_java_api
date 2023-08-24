@@ -13,30 +13,55 @@ public class UserGenerator {
 
         switch (userType) {
             case VALID_USER:
-                user.setUsername(getRandomUserName());
-                user.setEmail(getEmailWithLocalPart(user.getUsername()));
-                user.setPassword(getRandomValidPassword());
+                createValidUser();
                 break;
             case NO_NAME_USER:
-                user.setUsername("");
-                user.setEmail(getRandomEmail());
-                user.setPassword(getRandomValidPassword());
+                createNoNameUser();
                 break;
             case NO_EMAIL_USER:
-                user.setUsername(getRandomUserName());
-                user.setEmail("");
-                user.setPassword(getRandomValidPassword());
+                createNoEmailUser();
                 break;
             case NO_PASSWORD_USER:
-                user.setUsername(getRandomUserName());
-                user.setEmail(getEmailWithLocalPart(user.getUsername()));
-                user.setPassword("");
+                createNoPasswordUser();
+                break;
+            case INVALID_PASSWORD_USER:
+                createInvalidPasswordUser();
                 break;
         }
         return user;
     }
 
-    public static String getRandomUserName() {
+    private static void createValidUser() {
+        user.setUsername(getRandomUserName());
+        user.setEmail(getEmailWithLocalPart(user.getUsername()));
+        user.setPassword(getRandomValidPassword());
+    }
+
+    private static void createNoNameUser() {
+        user.setUsername("");
+        user.setEmail(getRandomEmail());
+        user.setPassword(getRandomValidPassword());
+    }
+
+    private static void createNoEmailUser() {
+        user.setUsername(getRandomUserName());
+        user.setEmail("");
+        user.setPassword(getRandomValidPassword());
+    }
+
+    private static void createNoPasswordUser() {
+        user.setUsername(getRandomUserName());
+        user.setEmail(getEmailWithLocalPart(user.getUsername()));
+        user.setPassword("");
+    }
+
+    private static void createInvalidPasswordUser() {
+        user.setUsername(getRandomUserName());
+        user.setEmail(getEmailWithLocalPart(user.getUsername()));
+        user.setPassword(getRandomInvalidPassword());
+    }
+
+    private static String getRandomUserName() {
         return faker.name().firstName();
     }
 
@@ -52,7 +77,7 @@ public class UserGenerator {
         return faker.internet().password(8, 10, false, false, false) + "A0";
     }
 
-    public static String getRandomInvalidPassword() {
+    private static String getRandomInvalidPassword() {
         return faker.internet().password(3, 4, false, false, false) + "A0";
     }
 
