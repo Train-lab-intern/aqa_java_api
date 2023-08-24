@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import static com.trainlab.model.user.UserClient.createUser;
-import static com.trainlab.model.user.UserGenerator.getRandomInvalidPassword;
 import static com.trainlab.model.user.UserGenerator.getUser;
 import static com.trainlab.model.user.UserType.*;
 import static org.apache.http.HttpStatus.*;
@@ -100,10 +99,7 @@ public class CreateUserTest {
     @DisplayName("Create user with invalid password")
     @Description("Expected response: StatusCode 400")
     public void f_createInvalidPasswordUserTest() {
-        User user = getUser(VALID_USER);
-        user.setPassword(getRandomInvalidPassword());
-
-        response = createUser(user);
+        response = createUser(getUser(INVALID_PASSWORD_USER));
 
         int actualStatusCode = response.extract().statusCode();
 
