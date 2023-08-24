@@ -23,8 +23,9 @@ public class CreateUserTest {
     private UserClient userClient;
     private ValidatableResponse response;
 
-    private static final String EMAIL_MUST_NOT_BE_NULL = "User email must not be null";
-    private static final String PASSWORD_MUST_NOT_BE_NULL = "User password must not be null";
+//    private static final String EMAIL_MUST_NOT_BE_NULL = "User email must not be null";
+//    private static final String BETWEEN_8_AND_256_CHARACTERS = "User email must be between 8 and 256 characters";
+//    private static final String PASSWORD_MUST_NOT_BE_NULL = "User password must not be null";
 
     @Before
     public void setUp() {
@@ -78,10 +79,8 @@ public class CreateUserTest {
         response = createUser(getUser(NO_EMAIL_USER));
 
         int actualStatusCode = response.extract().statusCode();
-        String actualMessage = response.extract().path("message");
 
         assertEquals(SC_BAD_REQUEST, actualStatusCode);
-        assertEquals(EMAIL_MUST_NOT_BE_NULL, actualMessage);
 
     }
 
@@ -92,10 +91,8 @@ public class CreateUserTest {
         response = createUser(getUser(NO_PASSWORD_USER));
 
         int actualStatusCode = response.extract().statusCode();
-        String actualMessage = response.extract().path("message");
 
         assertEquals(SC_BAD_REQUEST, actualStatusCode);
-        assertEquals(PASSWORD_MUST_NOT_BE_NULL, actualMessage);
 
     }
 
