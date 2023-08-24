@@ -12,6 +12,7 @@ import org.junit.runners.MethodSorters;
 
 import static com.trainlab.model.user.UserClient.createUser;
 import static com.trainlab.model.user.UserGenerator.getUser;
+import static com.trainlab.model.user.UserGenerator.getUserWithInvalidPassword;
 import static com.trainlab.model.user.UserType.*;
 import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.assertEquals;
@@ -96,10 +97,22 @@ public class CreateUserTest {
     }
 
     @Test
-    @DisplayName("Create user with invalid password")
+    @DisplayName("Create user with small password")
     @Description("Expected response: StatusCode 400")
-    public void f_createInvalidPasswordUserTest() {
-        response = createUser(getUser(INVALID_PASSWORD_USER));
+    public void f_createUserWithInvalidPasswordTest() {
+        response = createUser(getUserWithInvalidPassword(4, 5));
+
+        int actualStatusCode = response.extract().statusCode();
+
+        assertEquals(SC_BAD_REQUEST, actualStatusCode);
+
+    }
+
+    @Test
+    @DisplayName("Create user with big password")
+    @Description("Expected response: StatusCode 400")
+    public void g_createUserWithInvalidPasswordTest() {
+        response = createUser(getUserWithInvalidPassword(255, 256));
 
         int actualStatusCode = response.extract().statusCode();
 
