@@ -13,21 +13,24 @@ public class UserGenerator {
 
         switch (userType) {
             case VALID_USER:
-                user.setUsername(faker.name().firstName());
-                user.setEmail(faker.internet().emailAddress());
-                user.setPassword(faker.internet().password(8, 10, true, false, true));
+                user.setUsername(getRandomUserName());
+                user.setEmail(getEmailWithLocalPart(user.getUsername()));
+                user.setPassword(getRandomValidPassword());
                 break;
             case NO_NAME_USER:
-                user.setEmail(faker.internet().emailAddress());
-                user.setPassword(faker.internet().password(8, 10, true, false, true));
+                user.setUsername(null);
+                user.setEmail(getRandomEmail());
+                user.setPassword(getRandomValidPassword());
                 break;
             case NO_EMAIL_USER:
-                user.setUsername(faker.name().firstName());
-                user.setPassword(faker.internet().password(8, 10, true, false, true));
+                user.setUsername(getRandomUserName());
+                user.setEmail(null);
+                user.setPassword(getRandomValidPassword());
                 break;
             case NO_PASSWORD_USER:
-                user.setUsername(faker.name().firstName());
-                user.setEmail(faker.internet().emailAddress());
+                user.setUsername(getRandomUserName());
+                user.setEmail(getEmailWithLocalPart(user.getUsername()));
+                user.setPassword(null);
                 break;
         }
         return user;
@@ -41,7 +44,11 @@ public class UserGenerator {
         return faker.internet().emailAddress(getRandomUserName());
     }
 
-    public static String getRandomPassword() {
+    public static String getEmailWithLocalPart(String localPart) {
+        return faker.internet().emailAddress(localPart);
+    }
+
+    public static String getRandomValidPassword() {
         return faker.internet().password(8, 10, true, false, true);
     }
 
