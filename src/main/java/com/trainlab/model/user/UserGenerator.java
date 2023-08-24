@@ -52,4 +52,8 @@ public class UserGenerator {
         return faker.internet().password(8, 10, true, false, true);
     }
 
+    public static String getRandomInvalidPassword() {
+        return faker.internet().password(3, 4) + "A0";
+    }
+
 }
