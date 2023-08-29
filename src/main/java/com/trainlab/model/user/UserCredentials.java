@@ -9,12 +9,12 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserCredentials {
 
-    private String username;
-    private String email;
-    private String password;
+//    private String username;
+    private String userEmail;
+    private String userPassword;
 
     public static UserCredentials from(User user) {
-        return new UserCredentials(null, user.getEmail(), user.getPassword());
+        return new UserCredentials(user.getEmail(), user.getPassword());
     }
 
 }

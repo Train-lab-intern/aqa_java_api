@@ -16,6 +16,7 @@ import static com.trainlab.model.user.UserGenerator.getUser;
 import static com.trainlab.model.user.UserType.VALID_USER;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class LoginUserTest {
@@ -43,8 +44,10 @@ public class LoginUserTest {
         response = loginUser(from(user));
 
         int actualStatusCode = response.extract().statusCode();
+        String actualToken = response.extract().path("token");
 
         assertEquals(SC_OK, actualStatusCode);
+        assertNotNull(actualToken);
 
     }
 
