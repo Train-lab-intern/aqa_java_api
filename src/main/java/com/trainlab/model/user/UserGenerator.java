@@ -24,6 +24,18 @@ public class UserGenerator {
             case NO_PASSWORD_USER:
                 createUserNoPassword();
                 break;
+            case NAME_IS_NULL_USER:
+                createValidUser();
+                user.setUsername(null);
+                break;
+            case EMAIL_IS_NULL_USER:
+                createValidUser();
+                user.setEmail(null);
+                break;
+            case PASSWORD_IS_NULL_USER:
+                createValidUser();
+                user.setPassword(null);
+                break;
         }
         return user;
     }
