@@ -4,6 +4,7 @@ import com.trainlab.Client;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
+import static org.apache.http.HttpStatus.SC_OK;
 
 public class UserClient extends Client {
 
@@ -37,7 +38,8 @@ public class UserClient extends Client {
         return given()
                 .spec(getSpec())
                 .get(String.format(PATH_COMPLETE_REGISTER + "?userEmail=%s", email))
-                .then();
+                .then().statusCode(SC_OK);
+
     }
 
 }
