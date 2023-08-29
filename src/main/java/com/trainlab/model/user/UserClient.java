@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 public class UserClient extends Client {
 
     private static final String PATH_REGISTER = "/api/v1/users/register";
-    private static final String LOGIN_REGISTER = "/api/v1/auth";
+    private static final String PATH_LOGIN_REGISTER = "/api/v1/auth";
 
     public static ValidatableResponse createUser(User user) {
 
@@ -27,7 +27,7 @@ public class UserClient extends Client {
                 .spec(getSpec())
                 .body(credentials)
                 .when()
-                .post(LOGIN_REGISTER)
+                .post(PATH_LOGIN_REGISTER)
                 .then();
 
     }
