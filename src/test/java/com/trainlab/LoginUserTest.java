@@ -11,9 +11,10 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import static com.trainlab.model.user.UserClient.*;
-import static com.trainlab.model.user.UserCredentials.from;
+import static com.trainlab.model.user.UserCredentials.*;
 import static com.trainlab.model.user.UserGenerator.getUser;
 import static com.trainlab.model.user.UserType.VALID_USER;
+import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -21,9 +22,12 @@ import static org.junit.Assert.assertNotNull;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class LoginUserTest {
 
+    public static final String BAD_CREDENTIALS = "Bad credentials";
     private UserClient userClient;
     private User user;
     private ValidatableResponse response;
+
+    private static final String NOT_FOUND_WITH_EMAIL = "User not found with email";
 
     @Before
     public void setUp() {
@@ -48,6 +52,34 @@ public class LoginUserTest {
 
         assertEquals(SC_OK, actualStatusCode);
         assertNotNull(actualToken);
+
+    }
+
+    @Test
+    @DisplayName("Login user with invalid email")
+    @Description("Expected response: StatusCode 400")
+    public void b_loginUserInvalidEmailTest() {
+        response = loginUser(replaceUserEmail(user));
+
+        int actualStatusCode = response.extract().statusCode();
+        String actualMessage = response.extract().path("message");
+
+        assertEquals(SC_BAD_REQUEST, actualStatusCode);
+        assertEquals(String.format(NOT_FOUND_WITH_EMAIL + ": %s", user.getEmail()), actualMessage);
+
+    }
+
+    @Test
+    @DisplayName("Login user with invalid password")
+    @Description("Expected response: StatusCode 400")
+    public void c_loginUserNotValidPasswordTest() {
+        response = loginUser(replaceUserPassword(user));
+
+        int actualStatusCode = response.extract().statusCode();
+        String actualMessage = response.extract().path("message");
+
+        assertEquals(SC_BAD_REQUEST, actualStatusCode);
+        assertEquals(BAD_CREDENTIALS, actualMessage);
 
     }
 
