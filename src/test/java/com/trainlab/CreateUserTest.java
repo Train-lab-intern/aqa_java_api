@@ -165,7 +165,7 @@ public class CreateUserTest {
     @Test
     @DisplayName("Create user with big password")
     @Description("Expected response: StatusCode 400")
-    public void g_createUserWithInvalidPasswordTest() {
+    public void j_createUserWithInvalidPasswordTest() {
         response = createUser(getUserWithInvalidPassword(255, 256));
 
         int actualStatusCode = response.extract().statusCode();
