@@ -81,7 +81,7 @@ public class UserGenerator {
         return faker.name().firstName();
     }
 
-    private static String getRandomEmail() {
+    protected static String getRandomEmail() {
         return faker.internet().emailAddress(getRandomUserName());
     }
 
@@ -89,7 +89,7 @@ public class UserGenerator {
         return faker.internet().emailAddress(localPart);
     }
 
-    private static String getRandomValidPassword() {
+    protected static String getRandomValidPassword() {
         return faker.internet().password(8, 10, false, false, false) + "A0";
     }
 
