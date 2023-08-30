@@ -49,7 +49,7 @@ public class UserGenerator {
 
     private static void createValidUser() {
         user.setUsername(getRandomUserName());
-        user.setEmail(getEmailWithLocalPart(user.getUsername()));
+        user.setEmail(getRandomEmailWithLocalPart(user.getUsername()));
         user.setPassword(getRandomValidPassword());
     }
 
@@ -67,13 +67,13 @@ public class UserGenerator {
 
     private static void createUserNoPassword() {
         user.setUsername(getRandomUserName());
-        user.setEmail(getEmailWithLocalPart(user.getUsername()));
+        user.setEmail(getRandomEmailWithLocalPart(user.getUsername()));
         user.setPassword("");
     }
 
     private static void createUserWithInvalidPassword(int minimumLength, int maximumLength) {
         user.setUsername(getRandomUserName());
-        user.setEmail(getEmailWithLocalPart(user.getUsername()));
+        user.setEmail(getRandomEmailWithLocalPart(user.getUsername()));
         user.setPassword(getRandomInvalidPassword(minimumLength, maximumLength));
     }
 
@@ -85,7 +85,7 @@ public class UserGenerator {
         return faker.internet().emailAddress(getRandomUserName());
     }
 
-    private static String getEmailWithLocalPart(String localPart) {
+    private static String getRandomEmailWithLocalPart(String localPart) {
         return faker.internet().emailAddress(localPart);
     }
 
