@@ -1,4 +1,4 @@
-package com.trainlab.model.user;
+package com.itRoast.model.user;
 
 import com.github.javafaker.Faker;
 
