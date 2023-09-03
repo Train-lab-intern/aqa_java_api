@@ -1,7 +1,7 @@
-package com.trainlab;
+package com.itRoast;
 
-import com.trainlab.model.user.User;
-import com.trainlab.model.user.UserClient;
+import com.itRoast.model.user.User;
+import com.itRoast.model.user.UserClient;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
@@ -10,10 +10,10 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import static com.trainlab.model.user.UserClient.createUser;
-import static com.trainlab.model.user.UserGenerator.getUser;
-import static com.trainlab.model.user.UserGenerator.getUserWithInvalidPassword;
-import static com.trainlab.model.user.UserType.*;
+import static com.itRoast.model.user.UserClient.createUser;
+import static com.itRoast.model.user.UserGenerator.getUser;
+import static com.itRoast.model.user.UserGenerator.getUserWithInvalidPassword;
+import static com.itRoast.model.user.UserType.*;
 import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.assertEquals;
 

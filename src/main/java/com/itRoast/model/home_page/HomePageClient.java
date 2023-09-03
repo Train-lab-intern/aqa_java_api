@@ -1,8 +1,8 @@
-package com.trainlab.model.home_page;
+package com.itRoast.model.home_page;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.trainlab.Client;
+import com.itRoast.Client;
 import io.restassured.response.ValidatableResponse;
 
 import java.util.Map;
