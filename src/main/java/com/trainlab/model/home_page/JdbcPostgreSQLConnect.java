@@ -1,4 +1,4 @@
-package com.itRoast.model.home_page;
+package com.trainlab.model.home_page;
 
 import java.io.IOException;
 

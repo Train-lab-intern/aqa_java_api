@@ -1,6 +1,6 @@
-package com.itRoast.model.user;
+package com.trainlab.model.user;
 
-import com.itRoast.Client;
+import com.trainlab.Client;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;

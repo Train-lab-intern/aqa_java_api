@@ -1,4 +1,4 @@
-package com.itRoast.model.user;
+package com.trainlab.model.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
