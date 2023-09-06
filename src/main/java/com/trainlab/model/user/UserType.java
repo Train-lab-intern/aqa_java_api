@@ -1,4 +1,4 @@
-package com.itRoast.model.user;
+package com.trainlab.model.user;
 
 public enum UserType {
     VALID_USER,

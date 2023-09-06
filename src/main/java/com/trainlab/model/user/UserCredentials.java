@@ -1,11 +1,11 @@
-package com.itRoast.model.user;
+package com.trainlab.model.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import static com.itRoast.model.user.UserGenerator.getRandomEmail;
-import static com.itRoast.model.user.UserGenerator.getRandomValidPassword;
+import static com.trainlab.model.user.UserGenerator.getRandomEmail;
+import static com.trainlab.model.user.UserGenerator.getRandomValidPassword;
 
 @Setter
 @Getter

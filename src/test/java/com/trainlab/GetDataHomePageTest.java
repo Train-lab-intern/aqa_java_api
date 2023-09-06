@@ -1,4 +1,4 @@
-package com.itRoast;
+package com.trainlab;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -6,10 +6,10 @@ import org.junit.Test;
 
 import java.util.Map;
 
-import static com.itRoast.model.home_page.HomePageClient.sendGetRequest;
-import static com.itRoast.model.home_page.HomePageClient.getStatusCode;
-import static com.itRoast.model.home_page.HomePageClient.getDataHomePage;
-import static com.itRoast.model.home_page.JdbcPostgreSQLConnect.getDataFromDataBase;
+import static com.trainlab.model.home_page.HomePageClient.sendGetRequest;
+import static com.trainlab.model.home_page.HomePageClient.getStatusCode;
+import static com.trainlab.model.home_page.HomePageClient.getDataHomePage;
+import static com.trainlab.model.home_page.JdbcPostgreSQLConnect.getDataFromDataBase;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.assertEquals;
 

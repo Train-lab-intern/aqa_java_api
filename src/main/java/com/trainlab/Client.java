@@ -1,4 +1,4 @@
-package com.itRoast;
+package com.trainlab;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
